@@ -22,9 +22,9 @@ const Header = () => {
     <Navbar  className=' pt-6 pb-6 w-screen '> 
     
     <Navbar.Brand href="">
-      <img src="./img/main_logo.jpg" className="mr-8  h-20 lg:h-16 sm:h-9 sm:ml-0  " alt="Flowbite React Logo" />
+      <img src="./img/main_logo.jpg" className="lg:mr-8 md:mr-0 sm:mr-0 h-20 lg:h-16 sm:h-9 sm:ml-0 " alt="Flowbite React Logo" />
       <DarkThemeToggle />
-      <span className=" ml-5 self-center whitespace-nowrap lg:text-2xl font-semibold  dark:text-white">Tarining And Placement</span>
+      <span className=" lg:ml-5 md:ml-5 sm:ml-0 self-center whitespace-nowrap lg:text-2xl font-semibold  dark:text-white">Training And Placement</span>
     </Navbar.Brand>
     
     <div className="flex md:order-2 lg:order-2 sm:order-2 mr-6">
