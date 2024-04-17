@@ -9,13 +9,12 @@ import { Avatar } from "flowbite-react";
 const Register = () => {
 
   const navigate = useNavigate();
-
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     mobileNumber: "",
-    password:"",
-    confirmPassword:"",
+    password: "",
+    confirmPassword: "",
     birthDate: "",
     gender: "",
     bloodGroup: "",
@@ -89,11 +88,12 @@ const Register = () => {
       [name]: value,
     });
   };
-  
+
 
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log('Form Data:', formData); // Check if formData is correct
     fetch('http://localhost:8080/api/submit-form', {
       method: 'POST',
       headers: {
@@ -102,14 +102,14 @@ const Register = () => {
       body: JSON.stringify(formData)
     })
       .then(response => response.json())
-      .then(data => console.log(data))
+      .then(data => {
+        console.log('Response:', data); // Log the response from the server
+        alert("Student Registered Successfully! ✅")
+        navigate('/login', { replace: true });
+      })
       .catch(error => console.error(error));
-
-
-    alert("Student Registered Successfully! ✅")
-
-    navigate('/login', { replace: true });
   };
+  
 
 
   return (
@@ -125,34 +125,34 @@ const Register = () => {
             <div className="mb-2 block">
               <Label htmlFor="fullName" value="Full Name" />
             </div>
-            <TextInput id="fullName" name="fullName" placeholder="John Doe" required shadow value={formData.fullName} onChange={handleChange}/>
+            <TextInput id="fullName" name="fullName" placeholder="John Doe" required shadow value={formData.fullName} onChange={handleChange} />
           </div>
           <div>
             <div className="mb-2 block">
               <Label htmlFor="email2" value="Your email" />
             </div>
-            <TextInput id="email2" name="email" type="email" placeholder="name@flowbite.com" required shadow value={formData.email} onChange={handleChange}/>
+            <TextInput id="email2" name="email" type="email" placeholder="name@flowbite.com" required shadow value={formData.email} onChange={handleChange} />
           </div>
           <div>
             <div className="mb-2 block">
               <Label htmlFor="username3" value="Username(PRN)" />
             </div>
-            <TextInput id="username3" name="prnNumber" type="number" placeholder="221201014" required shadow value={formData.prnNumber} onChange={handleChange}/>
-           
+            <TextInput id="username3" name="prnNumber" type="number" placeholder="221201014" required shadow value={formData.prnNumber} onChange={handleChange} />
+
           </div>
-      
+
 
           <div>
             <div className="mb-2 block">
               <Label htmlFor="password1" value="Your password" />
             </div>
-            <TextInput id="password1" name="password" type="password" placeholder="**********" required value={formData.password} onChange={handleChange}/>
+            <TextInput id="password1" name="password" type="password" placeholder="**********" required value={formData.password} onChange={handleChange} />
           </div>
           <div>
             <div className="mb-2 block">
               <Label htmlFor="password2" value="Confirm password" />
             </div>
-            <TextInput id="password2" name="confirmPassword" type="password" placeholder="**********" required value={formData.confirmPassword} onChange={handleChange}/>
+            <TextInput id="password2" name="confirmPassword" type="password" placeholder="**********" required value={formData.confirmPassword} onChange={handleChange} />
           </div>
           <div className="flex items-center gap-2">
             <Checkbox id="remember" />

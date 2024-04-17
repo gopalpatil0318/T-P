@@ -31,6 +31,8 @@ import { TbMapPinCode, TbPercentage } from "react-icons/tb";
 const Profile_completion = () => {
     const navigate = useNavigate();
 
+
+
     const [formData, setFormData] = useState({
         fullName: "",
         email: "",
@@ -113,7 +115,7 @@ const Profile_completion = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const prn = localStorage.getItem('prn'); // Get PRN from local storage
+        const prn = localStorage.getItem('prn');
         if (!prn) {
             console.error('PRN not found in local storage');
             return;
@@ -129,6 +131,7 @@ const Profile_completion = () => {
             .then(response => response.json())
             .then(data => {
                 console.log(data);
+                setFormData.fullName = data.fullName;
                 alert("Profile updated successfully!");
                 navigate('/profile', { replace: true });
             })
@@ -446,7 +449,21 @@ const Profile_completion = () => {
                                     <TextInput id="pincode" type="number" placeholder="Ex. 424001" icon={TbMapPinCode} name="pincode" value={formData.pincode} onChange={handleChange} />
                                 </div>
 
-                                <Button className="w-1/3 mb-8 mt-4" type="submit">Next</Button>
+                                <div className="w-2/3 md:w-1/3 lg:w-1/4">
+                                </div>
+
+                                <div className="w-2/3 md:w-1/3 lg:w-1/4">
+                                </div>
+
+                                <div className="w-2/3 md:w-1/3 lg:w-1/4">
+                                </div>
+
+
+
+                                <Button className="w-1/4 mb-8 mt-4" style={{ marginTop: '30px' }} type="submit">Next</Button>
+
+
+
 
                             </form>
 
@@ -876,24 +893,29 @@ const Profile_completion = () => {
                                     </Select>
 
                                 </div>
-                                {showReasonTextarea && (
-                                    <div className="w-2/3 md:w-1/3 lg:w-1/4">
-                                        <div className="mb-2 flex flex-row">
-                                            <Label htmlFor="gapReason" value="Reason(If any gap during Education)" />
-                                            <Tooltip content="Select Yes or No" animation="duration-1000">
-                                                <Button size="xs" className='ml-2 h-5 w-5 text-balance pt-0 bg-slate-300 dark:bg-slate-800'>i</Button>
-                                            </Tooltip>
-                                        </div>
-                                        <div>
-                                            <Textarea id="comment" placeholder="Leave a comment..." rows={4} name="gapReason" value={formData.gapReason} onChange={handleChange} />
-                                        </div>
+                                <div className="w-1/3 md:w-1/3 lg:w-1/4">
+                                    {showReasonTextarea && (
+                                        <>
+                                            <div className="mb-2 flex flex-row">
+                                                <Label htmlFor="gapReason" value="Reason(If any gap during Education)" />
+                                                <Tooltip content="Select Yes or No" animation="duration-1000">
+                                                    <Button size="xs" className='ml-2 h-5 w-5 text-balance pt-0 bg-slate-300 dark:bg-slate-800'>i</Button>
+                                                </Tooltip>
+                                            </div>
+                                            <div>
+                                                <Textarea id="comment" placeholder="Leave a comment..." rows={4} name="gapReason" value={formData.gapReason} onChange={handleChange} />
+                                            </div>
 
-                                    </div>
-                                )}
+                                        </>
+                                    )}
+                                </div>
+                                <div className="w-2/3 md:w-1/3 lg:w-1/4"></div>
+                                <div className="w-2/3 md:w-1/3 lg:w-1/4"></div>
+                                <div className="w-2/3 md:w-1/3 lg:w-1/4">
+                                </div>
 
-
-                                <Button className="w-1/3 mb-8 mt-4" onClick={prevStage}>Previous</Button>
-                                <Button className="w-1/3 mb-8 mt-4" type="submit">Next</Button>
+                                <Button className="w-1/4 mb-8 mt-4" onClick={prevStage}>Previous</Button>
+                                <Button className="w-1/4 mb-8 mt-4" type="submit">Next</Button>
 
 
 
@@ -1119,8 +1141,9 @@ const Profile_completion = () => {
                                     </div>
                                     <TextInput id="hackerRankLink" type="text" placeholder="https://hackerrank.com" icon={FaHackerrank} name="hackerRankLink" value={formData.hackerRankLink} onChange={handleChange} />
                                 </div>
-                                <Button className="w-1/3 mb-8 mt-4" onClick={prevStage}>Previous</Button>
-                                <Button className="w-1/3 mb-8 mt-4" onClick={handleSubmit} type="submit">Submit</Button>
+                                <div className="w-2/3 md:w-1/3 lg:w-1/4"></div>
+                                <Button className="w-1/4 mb-8 mt-4" onClick={prevStage}>Previous</Button>
+                                <Button className="w-1/4 mb-8 mt-4" onClick={handleSubmit} type="submit">Submit</Button>
                             </form>
 
                         </>

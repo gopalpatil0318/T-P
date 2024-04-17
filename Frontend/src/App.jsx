@@ -18,7 +18,6 @@ function App() {
   return (
     <div className='bg-slate-200 dark:bg-slate-900 h-full'>
       <Router>
-       
         <Routes>
           <Route path="/" element={<Register />} />
           <Route path="/profile_completion" element={<Profile_completion />} />

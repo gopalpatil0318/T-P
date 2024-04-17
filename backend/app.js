@@ -92,10 +92,9 @@ app.post('/api/submit-form', (req, res) => {
   const formData = req.body;
   res.json({ message: 'Form data received and stored successfully.' });
 
-
   const newStudent = new Student(formData);
 
-
+console.log(newStudent)
   newStudent.save()
     .then(() => console.log('User saved to database'))
     .catch(err => console.error(err));
@@ -116,6 +115,7 @@ app.get('/students', async (req, res) => {
     res.status(500).json({ message: 'Internal Server Error' });
   }
 });
+
 
 app.put('/api/update-profile/:prn', (req, res) => {
   const  prnNumber = req.params.prn;
@@ -138,14 +138,13 @@ app.put('/api/update-profile/:prn', (req, res) => {
 });
 
 
+
 app.get('/api/get-data', (req, res) => {
   const { prn } = req.query;
 
   console.log(prn)
-
-
-
-  Student.findOne({ prn })
+const prnNumber = prn;
+  Student.findOne({ prnNumber })
     .then(student => {
       if (!student) {
         return res.status(404).json({ error: 'Student not found' });
